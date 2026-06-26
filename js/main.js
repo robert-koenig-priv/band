@@ -43,6 +43,72 @@
     });
   }
 
+  // --- Band-Karussell (Swipe / Pfeile / Punkte) ---
+  var track = document.getElementById("memberTrack");
+  if (track) {
+    var slides = track.querySelectorAll(".member");
+    var prevBtn = document.getElementById("memberPrev");
+    var nextBtn = document.getElementById("memberNext");
+    var dotsWrap = document.getElementById("memberDots");
+    var current = 0;
+
+    function slideWidth() {
+      return slides.length ? slides[0].getBoundingClientRect().width : track.clientWidth;
+    }
+    function goTo(i) {
+      current = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: current * slideWidth(), behavior: "smooth" });
+    }
+    function syncFromScroll() {
+      var idx = Math.round(track.scrollLeft / slideWidth());
+      idx = Math.max(0, Math.min(slides.length - 1, idx));
+      if (idx !== current) current = idx;
+      updateUI();
+    }
+    function updateUI() {
+      if (prevBtn) prevBtn.disabled = current === 0;
+      if (nextBtn) nextBtn.disabled = current === slides.length - 1;
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll("button").forEach(function (d, i) {
+          d.classList.toggle("active", i === current);
+          d.setAttribute("aria-selected", i === current ? "true" : "false");
+        });
+      }
+    }
+
+    // Punkte erzeugen
+    if (dotsWrap) {
+      slides.forEach(function (s, i) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("role", "tab");
+        var name = s.querySelector("h3");
+        dot.setAttribute("aria-label", name ? name.textContent : "Mitglied " + (i + 1));
+        dot.addEventListener("click", function () { goTo(i); });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { goTo(current + 1); });
+
+    // Tastatur (wenn Track fokussiert)
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); goTo(current + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Scroll/Swipe -> UI nachziehen (entprellt)
+    var scrollTimer = null;
+    track.addEventListener("scroll", function () {
+      if (scrollTimer) clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(syncFromScroll, 90);
+    }, { passive: true });
+
+    window.addEventListener("resize", function () { goTo(current); });
+    updateUI();
+  }
+
   // --- Reveal-Animationen beim Scrollen ---
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {

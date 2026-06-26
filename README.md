@@ -37,7 +37,8 @@ relative Pfade sauber laden.)
 - **Songliste** in `js/songs.js` pflegen.
 - **MP3s** in `/audio` ablegen und Pfade in `index.html` / `intern.html` anpassen.
 - **Bandtexte**: kurze Beschreibung je Mitglied ergänzen (`#band`).
-- **Kalender** im internen Bereich einbinden.
+- **Kalender** im internen Bereich einbinden: Teamup-Embed-URL in `intern.html`
+  (Abschnitt `#kalender`) eintragen und Platzhalter entfernen.
 - **Zugriffsschutz** für `intern.html` kommt mit dem Backend.
 
 ## Hinweise

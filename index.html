@@ -98,32 +98,70 @@
         <p>Sechs Köpfe, ein Sound. Das sind die Donkey Shorts.</p>
       </div>
 
-      <div class="members">
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Annie.png" alt="Annie"></div>
-          <div class="member-body"><h3>Annie</h3><div class="role">Lead Vocals</div></div>
-        </article>
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Rob.png" alt="Robert"></div>
-          <div class="member-body"><h3>Robert</h3><div class="role">Lead Vocals &amp; Akustikgitarre</div></div>
-        </article>
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Joe.png" alt="Joe"></div>
-          <div class="member-body"><h3>Joe</h3><div class="role">Leadgitarre</div></div>
-        </article>
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Andreas.png" alt="Andreas"></div>
-          <div class="member-body"><h3>Andreas</h3><div class="role">Bass</div></div>
-        </article>
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Maria.png" alt="Maria"></div>
-          <div class="member-body"><h3>Maria</h3><div class="role">Keys</div></div>
-        </article>
-        <article class="member reveal">
-          <div class="member-photo"><img src="assets/fotos/Thorsten.png" alt="Torsten"></div>
-          <div class="member-body"><h3>Torsten</h3><div class="role">Drums</div></div>
-        </article>
+      <div class="band-carousel reveal">
+        <button class="carousel-btn prev" id="memberPrev" type="button" aria-label="Vorheriges Mitglied">‹</button>
+
+        <div class="member-track" id="memberTrack" tabindex="0">
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Annie.png" alt="Annie"></div>
+            <div class="member-body">
+              <h3>Annie</h3>
+              <div class="role">Lead Vocals</div>
+              <p class="member-bio">Singt, seit sie sprechen kann — und das war laut Familienlegende deutlich vor dem ersten „Mama". Hat in der Dusche angefangen, bis die Nachbarn Eintritt verlangten. Bringt eine Strophe so eindringlich rüber, dass selbst der Tontechniker kurz vergisst zu mischen.</p>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Rob.png" alt="Robert"></div>
+            <div class="member-body">
+              <h3>Robert</h3>
+              <div class="role">Lead Vocals &amp; Akustikgitarre</div>
+              <p class="member-bio">Greift zur Akustikgitarre, als wäre sie ein verlängerter Arm. Begann mit drei Akkorden am Lagerfeuer und hat seither zwei dazugelernt — mehr braucht echter Rock 'n' Roll bekanntlich nicht. Singt zweite Stimme so sicher, dass keiner weiß, ob er führt oder folgt.</p>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Joe.png" alt="Joe"></div>
+            <div class="member-body">
+              <h3>Joe</h3>
+              <div class="role">Leadgitarre</div>
+              <p class="member-bio">Spricht fließend Solo. Bekam mit zwölf eine Gitarre geschenkt und hat seitdem nicht mehr aufgehört zu üben — sehr zum Leidwesen seiner damaligen Mitbewohner. Sein Verstärker kennt nur eine relevante Einstellung: lauter. Findet jedes Hendrix-Riff, aber nie sein Plektrum.</p>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Andreas.png" alt="Andreas"></div>
+            <div class="member-body">
+              <h3>Andreas</h3>
+              <div class="role">Bass</div>
+              <p class="member-bio">Das Fundament. Steht hinten, hält alles zusammen und sagt drei Worte pro Probe — zwei davon sind „noch eins?". Kam zum Bass, weil „da nur vier Saiten dran sind", und blieb, als er merkte, dass ohne ihn der ganze Laden auseinanderfällt. Groovt im Schlaf.</p>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Maria.png" alt="Maria"></div>
+            <div class="member-body">
+              <h3>Maria</h3>
+              <div class="role">Keys</div>
+              <p class="member-bio">Die heimliche Dirigentin am Klavier. Klassisch ausgebildet, aber insgeheim verliebt in fette Hammond-Sounds. Findet jeden Akkord, den die anderen noch suchen, und hat für jede musikalische Diskussion die passende Tonart parat. Wärmt sich mit Chopin auf und landet bei „Highway to Hell".</p>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="member-photo"><img src="assets/fotos/Thorsten.png" alt="Torsten"></div>
+            <div class="member-body">
+              <h3>Torsten</h3>
+              <div class="role">Drums</div>
+              <p class="member-bio">Der Taktgeber mit den schnellsten Armen Karlsruhes. Trommelte als Kind auf allem, was nicht bei drei auf dem Baum war — Töpfe, Tische, gelegentlich Geschwister. Zählt zuverlässig ein, manchmal sogar im richtigen Tempo. Ohne seinen Beat steht die Band — mit ihm tanzt der ganze Saal.</p>
+            </div>
+          </article>
+        </div>
+
+        <button class="carousel-btn next" id="memberNext" type="button" aria-label="Nächstes Mitglied">›</button>
+
+        <div class="carousel-dots" id="memberDots" role="tablist" aria-label="Bandmitglieder auswählen"></div>
       </div>
+      <p class="carousel-hint">← Wischen oder Pfeile nutzen →</p>
     </div>
   </section>
 
