@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intern — The Donkey Shorts</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav scrolled" id="nav">
+    <div class="container">
+      <a class="nav-brand" href="index.html">
+        <img src="assets/img/logo.png" alt="The Donkey Shorts Logo">
+        <span>The Donkey Shorts</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">← Öffentlich</a></li>
+        <li><a href="#proben">Proben-Audios</a></li>
+        <li><a href="#songliste">Songliste</a></li>
+        <li><a href="#kalender">Kalender</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== INTERN HERO ===================== -->
+  <header class="intern-hero">
+    <div class="container">
+      <span class="kicker">Interner Bereich</span>
+      <h1>Bandraum 🔒</h1>
+      <p style="color:var(--text-dim);max-width:560px;margin-top:.6rem;">
+        Nur für Bandmitglieder. <span class="badge">Zugriffsschutz folgt mit dem Backend</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- ===================== PROBEN-AUDIOS ===================== -->
+  <section class="section" id="proben">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Üben</span>
+        <h2>Proben-Audios</h2>
+        <p>Aufnahmen der Songs zum Üben. MP3-Dateien in den Ordner <code>/audio</code> legen.</p>
+      </div>
+
+      <div class="audio-card" style="max-width:680px;">
+        <div class="track">
+          <span>Song A — Übungsversion</span>
+          <audio controls preload="none"><source src="audio/uebung-songA.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
+        </div>
+        <div class="track">
+          <span>Song B — Übungsversion</span>
+          <audio controls preload="none"><source src="audio/uebung-songB.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
+        </div>
+        <div class="track">
+          <span>Song C — Übungsversion</span>
+          <audio controls preload="none"><source src="audio/uebung-songC.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SONGLISTE (Google Sheet) ===================== -->
+  <section class="section alt" id="songliste">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Organisation</span>
+        <h2>Songliste</h2>
+        <p>Eingebettetes Google Sheet — Bearbeitung direkt in Google.</p>
+      </div>
+      <iframe
+        class="sheet-embed"
+        src="https://docs.google.com/spreadsheets/d/1WN61D1yTqMULzgzwUVuVzSNY6AiflLsN4PfKxhkBfBs/edit?gid=0&widget=true&headers=false&rm=minimal"
+        title="Songliste Google Sheet"
+        loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- ===================== KALENDER ===================== -->
+  <section class="section" id="kalender">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Verfügbarkeit</span>
+        <h2>Urlaubskalender</h2>
+        <p>Abwesenheiten und Urlaub der Bandmitglieder.</p>
+      </div>
+
+      <div class="cal-placeholder">
+        <h3>📅 Kalender folgt</h3>
+        <p>Hier wird der Kalender mit den Urlaubseinträgen eingebunden —<br>
+           z. B. ein eingebetteter Google-Kalender oder eine eigene Lösung im späteren Backend.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="Logo">
+          <span>The Donkey Shorts</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Öffentliche Seite</a>
+          <a href="#proben">Proben-Audios</a>
+          <a href="#songliste">Songliste</a>
+          <a href="#kalender">Kalender</a>
+        </div>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> The Donkey Shorts · Interner Bereich</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
