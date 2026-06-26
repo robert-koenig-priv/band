@@ -239,8 +239,11 @@ img { max-width: 100%; display: block; }
 .footer-copy { color: var(--text-dim); font-size: .85rem; margin-top: 2rem; text-align: center; }
 
 /* ---------- Reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* Reveal-Animation nur, wenn JS aktiv ist (Klasse js-anim am <html>).
+   Ohne JS bleibt der Inhalt sichtbar — nie unsichtbar hängenbleiben. */
+.reveal { transition: opacity .7s ease, transform .7s ease; }
+html.js-anim .reveal { opacity: 0; transform: translateY(30px); }
+html.js-anim .reveal.in { opacity: 1; transform: none; }
 
 /* ---------- Internal page ---------- */
 .intern-hero { padding: calc(var(--nav-h) + 4rem) 0 3rem; background: var(--bg-soft); border-bottom: 1px solid var(--line); }

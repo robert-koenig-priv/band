@@ -2,6 +2,10 @@
 (function () {
   "use strict";
 
+  // --- JS ist aktiv: Reveal-Animationen freischalten ---
+  // (Ohne diese Klasse bleibt der Inhalt per CSS sichtbar, falls JS ausfällt.)
+  document.documentElement.classList.add("js-anim");
+
   // --- Jahr im Footer ---
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -44,6 +48,9 @@
   }
 
   // --- Band-Karussell (Swipe / Pfeile / Punkte) ---
+  // In try/catch gekapselt: ein Fehler hier darf die Reveal-Logik unten
+  // nicht verhindern (sonst bliebe die Seite unsichtbar).
+  try {
   var track = document.getElementById("memberTrack");
   if (track) {
     var slides = track.querySelectorAll(".member");
@@ -107,6 +114,9 @@
 
     window.addEventListener("resize", function () { goTo(current); });
     updateUI();
+  }
+  } catch (e) {
+    if (window.console) console.warn("Karussell konnte nicht initialisiert werden:", e);
   }
 
   // --- Reveal-Animationen beim Scrollen ---
