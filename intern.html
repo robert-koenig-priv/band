@@ -49,21 +49,14 @@
       <div class="section-head">
         <span class="kicker">Üben</span>
         <h2>Proben-Audios</h2>
-        <p>Aufnahmen der Songs zum Üben. MP3-Dateien in den Ordner <code>/audio</code> legen.</p>
+        <p>Aufnahmen der Songs zum Üben. MP3-Dateien einfach in den Ordner
+           <code>assets/intern/audio</code> legen — sie erscheinen automatisch
+           hier. Dateiname-Format: <code>Interpret - Titel.mp3</code>.</p>
       </div>
 
       <div class="audio-card" style="max-width:680px;">
-        <div class="track">
-          <span>Song A — Übungsversion</span>
-          <audio controls preload="none"><source src="audio/uebung-songA.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
-        </div>
-        <div class="track">
-          <span>Song B — Übungsversion</span>
-          <audio controls preload="none"><source src="audio/uebung-songB.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
-        </div>
-        <div class="track">
-          <span>Song C — Übungsversion</span>
-          <audio controls preload="none"><source src="audio/uebung-songC.mp3" type="audio/mpeg">Kein Audio-Support.</audio>
+        <div id="probenAudios">
+          <p class="audio-empty">Audios werden geladen …</p>
         </div>
       </div>
     </div>
@@ -122,5 +115,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/intern-audio.js"></script>
 </body>
 </html>

@@ -163,6 +163,10 @@ img { max-width: 100%; display: block; }
 .track:last-child { margin-bottom: 0; }
 .track span { font-weight: 600; font-size: .95rem; }
 .track audio { width: 100%; }
+.track-head { display: flex; flex-direction: column; gap: .1rem; }
+.track-title { font-weight: 700; font-size: 1rem; color: var(--text); }
+.track-artist { font-weight: 500; font-size: .85rem; color: var(--text-dim); }
+.audio-empty { color: var(--text-dim); font-size: .95rem; }
 
 /* ---------- Videos ---------- */
 .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
