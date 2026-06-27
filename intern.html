@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=7">
   <!-- Einfacher Zugriffsschutz (clientseitig) -->
   <style>
     html.gate-locked body > *:not(#authGate) { display: none !important; }
@@ -29,8 +29,9 @@
   <!-- ===================== ZUGRIFFSSCHUTZ ===================== -->
   <div id="authGate">
     <form id="authForm" class="auth-box" autocomplete="off">
+      <img src="assets/fotos/bunker.png" alt="Unser Bandbunker an der Rheinhafenstraße" class="auth-photo" loading="eager">
       <img src="assets/img/logo.png" alt="Logo" class="auth-logo">
-      <h2>Bandraum 🔒</h2>
+      <h2>Proberaum 🔒</h2>
       <p style="color:var(--text-dim);margin:0;">Bitte Passwort eingeben.</p>
       <input type="password" id="authInput" placeholder="Passwort" aria-label="Passwort" autofocus>
       <button type="submit" class="btn btn-primary">Eintreten</button>
@@ -47,9 +48,9 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">← Öffentlich</a></li>
-        <li><a href="#proben">Proben-Audios</a></li>
+        <li><a href="#kalender">Termine</a></li>
+        <li><a href="#proben">Üben</a></li>
         <li><a href="#songliste">Songliste</a></li>
-        <li><a href="#kalender">Kalender</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -61,9 +62,9 @@
   <header class="intern-hero">
     <div class="container">
       <span class="kicker">Interner Bereich</span>
-      <h1>Bandraum 🔒</h1>
+      <h1>Proberaum 🔒</h1>
       <p style="color:var(--text-dim);max-width:560px;margin-top:.6rem;">
-        Nur für Bandmitglieder. <span class="badge">Zugriffsschutz folgt mit dem Backend</span>
+        Nur für Bandmitglieder.
       </p>
     </div>
   </header>
@@ -74,7 +75,7 @@
     <div class="container">
       <div class="section-head">
         <span class="kicker">Verfügbarkeit</span>
-        <h2>Bandkalender</h2>
+        <h2>Termine</h2>
 
         </div>
 
@@ -114,10 +115,28 @@
            hier. Dateiname-Format: <code>Interpret - Titel.mp3</code>.</p>
       </div>
 
-      <div class="audio-card" style="max-width:680px;">
-        <div id="probenAudios">
-          <p class="audio-empty">Audios werden geladen …</p>
-        </div>
+      <div class="audio-groups" style="max-width:680px;">
+        <details class="audio-group">
+          <summary>
+            <span class="audio-group-title">🎤 Background Gesang</span>
+            <span class="audio-group-count" id="countBackground"></span>
+            <span class="audio-group-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="audio-group-body" id="probenBackground">
+            <p class="audio-empty">Audios werden geladen …</p>
+          </div>
+        </details>
+
+        <details class="audio-group">
+          <summary>
+            <span class="audio-group-title">🎸 Instrumente</span>
+            <span class="audio-group-count" id="countInstrumente"></span>
+            <span class="audio-group-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="audio-group-body" id="probenInstrumente">
+            <p class="audio-empty">Audios werden geladen …</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -158,9 +177,9 @@
     </div>
   </footer>
 
-  <script src="js/intern-auth.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/intern-audio.js"></script>
+  <script src="js/intern-auth.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="js/intern-audio.js?v=2"></script>
   <script>
     (function () {
       const btn = document.getElementById('copyFeedBtn');

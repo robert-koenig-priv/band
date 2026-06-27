@@ -1,26 +1,31 @@
 /* The Donkey Shorts — Proben-Audios
-   Generische Logik: liest alle MP3-Dateien aus dem Audio-Verzeichnis und
-   bietet sie zum Abspielen an. Interpret und Titel werden getrennt angezeigt.
+   Liest MP3-Dateien aus den Audio-Verzeichnissen und bietet sie zum Abspielen
+   an. Interpret und Titel werden getrennt angezeigt.
+
+   Aufgeteilt in zwei Bereiche:
+   1. Background Gesang  -> assets/intern/audio/background/
+   2. Instrumente        -> assets/intern/audio/  (Hauptordner)
 
    Dateinamen-Format: "Interpret - Titel.mp3"  (Trennzeichen "-").
 
-   Quellen für die Dateiliste (in dieser Reihenfolge):
+   Quellen für die Dateiliste je Ordner (in dieser Reihenfolge):
    1. Directory-Listing des Servers (z. B. `python3 -m http.server`) — erkennt
       neue MP3s automatisch, ganz ohne Pflege.
-   2. Fallback: `playlist.json` im Audio-Ordner (für Hoster ohne Listing,
-      z. B. GitHub Pages). Neu generieren mit:
+   2. Fallback: `playlist.json` im jeweiligen Audio-Ordner (für Hoster ohne
+      Listing, z. B. GitHub Pages). Neu generieren mit:
         python3 -c "import os,json;d='assets/intern/audio';\
         json.dump(sorted([f for f in os.listdir(d) if f.lower().endswith('.mp3')],\
         key=str.lower),open(d+'/playlist.json','w',encoding='utf-8'),\
         ensure_ascii=False,indent=2)"
+      (für den Background-Ordner d='assets/intern/audio/background' setzen)
 */
 (function () {
   "use strict";
 
-  var AUDIO_DIR = "assets/intern/audio/";
-
-  var container = document.getElementById("probenAudios");
-  if (!container) return;
+  var GROUPS = [
+    { dir: "assets/intern/audio/background/", el: "probenBackground", count: "countBackground" },
+    { dir: "assets/intern/audio/",            el: "probenInstrumente", count: "countInstrumente" }
+  ];
 
   // --- Dateiname -> { artist, title } --------------------------------------
   function parseTrack(filename) {
@@ -46,8 +51,8 @@
   }
 
   // --- Dateiliste beschaffen -----------------------------------------------
-  function fromDirectoryListing() {
-    return fetch(AUDIO_DIR, { headers: { Accept: "text/html" } })
+  function fromDirectoryListing(dir) {
+    return fetch(dir, { headers: { Accept: "text/html" } })
       .then(function (res) {
         if (!res.ok) throw new Error("listing not available");
         return res.text();
@@ -66,20 +71,20 @@
       });
   }
 
-  function fromManifest() {
-    return fetch(AUDIO_DIR + "playlist.json")
+  function fromManifest(dir) {
+    return fetch(dir + "playlist.json")
       .then(function (res) {
         if (!res.ok) throw new Error("playlist.json not found");
         return res.json();
       });
   }
 
-  function loadFiles() {
-    return fromDirectoryListing().catch(fromManifest);
+  function loadFiles(dir) {
+    return fromDirectoryListing(dir).catch(function () { return fromManifest(dir); });
   }
 
   // --- Rendering ------------------------------------------------------------
-  function render(files) {
+  function render(container, dir, files) {
     files.sort(function (a, b) {
       return a.localeCompare(b, "de", { sensitivity: "base" });
     });
@@ -111,7 +116,7 @@
       audio.controls = true;
       audio.preload = "none";
       var source = document.createElement("source");
-      source.src = AUDIO_DIR + encodeURIComponent(file);
+      source.src = dir + encodeURIComponent(file);
       source.type = "audio/mpeg";
       audio.appendChild(source);
       audio.appendChild(document.createTextNode("Kein Audio-Support."));
@@ -125,21 +130,30 @@
     container.appendChild(frag);
   }
 
-  function showMessage(text) {
+  function showMessage(container, text) {
     container.innerHTML = '<p class="audio-empty"></p>';
     container.querySelector(".audio-empty").textContent = text;
   }
 
   // --- Start ---------------------------------------------------------------
-  loadFiles()
-    .then(function (files) {
-      if (!files || !files.length) {
-        showMessage("Noch keine Proben-Audios vorhanden.");
-        return;
-      }
-      render(files);
-    })
-    .catch(function () {
-      showMessage("Audios konnten nicht geladen werden.");
-    });
+  GROUPS.forEach(function (group) {
+    var container = document.getElementById(group.el);
+    if (!container) return;
+    var counter = group.count ? document.getElementById(group.count) : null;
+
+    loadFiles(group.dir)
+      .then(function (files) {
+        if (!files || !files.length) {
+          showMessage(container, "Noch keine Audios vorhanden.");
+          if (counter) counter.textContent = "0";
+          return;
+        }
+        render(container, group.dir, files);
+        if (counter) counter.textContent = String(files.length);
+      })
+      .catch(function () {
+        showMessage(container, "Audios konnten nicht geladen werden.");
+        if (counter) counter.textContent = "";
+      });
+  });
 })();
