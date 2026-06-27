@@ -9,9 +9,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <!-- Einfacher Zugriffsschutz (clientseitig) -->
+  <style>
+    html.gate-locked body > *:not(#authGate) { display: none !important; }
+    #authGate { display: none; }
+    html.gate-locked #authGate { display: flex; }
+    html.gate-locked { overflow: hidden; }
+  </style>
+  <script>
+    (function () {
+      try { if (sessionStorage.getItem('ds_intern') === 'ok') return; } catch (e) {}
+      document.documentElement.classList.add('gate-locked');
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- ===================== ZUGRIFFSSCHUTZ ===================== -->
+  <div id="authGate">
+    <form id="authForm" class="auth-box" autocomplete="off">
+      <img src="assets/img/logo.png" alt="Logo" class="auth-logo">
+      <h2>Bandraum 🔒</h2>
+      <p style="color:var(--text-dim);margin:0;">Bitte Passwort eingeben.</p>
+      <input type="password" id="authInput" placeholder="Passwort" aria-label="Passwort" autofocus>
+      <button type="submit" class="btn btn-primary">Eintreten</button>
+      <p class="auth-error" id="authError" hidden>Falsches Passwort.</p>
+    </form>
+  </div>
 
   <!-- ===================== NAV ===================== -->
   <nav class="nav scrolled" id="nav">
@@ -51,21 +76,27 @@
         <span class="kicker">Verfügbarkeit</span>
         <h2>Bandkalender</h2>
 
-        <p>Urlaub &amp; Abwesenheiten, Auftritte und Probentermine.</p>
-      </div>
+        </div>
 
             <div class="cal-actions">
-        <a href="https://teamup.com/ks8pxc1986nm3p8o7y" target="_blank" rel="noopener" class="btn btn-ghost">
-          Kalender vergrössern ↗
+        <a href="https://teamup.com/ks8pxc1986nm3p8o7y?view=mw10" target="_blank" rel="noopener" class="btn btn-ghost">
+          Abwesenheit eintragen↗
         </a>
+        <button type="button" class="btn btn-ghost tip" id="copyFeedBtn"
+                data-feed="https://ics.teamup.com/feed/ks8pxc1986nm3p8o7y/15739805.ics"
+                data-tip="iCal-Link des Probenkalenders zum Einfügen in einer Kalender-App (Google, Apple, Outlook …) unter Kalender abonnieren">
+          Proben Feed 📋
+        </button>
       </div>
 
-      <iframe
-        class="cal-embed"
-        src="https://teamup.com/ks8pxc1986nm3p8o7y"
-        title="Bandkalender"
-        loading="lazy">
-      </iframe>
+      <div class="cal-wrap">
+        <iframe
+          class="cal-embed"
+          src="https://teamup.com/ks2ogna3mtvyz8vcvn?view=mw10&showViewSelector=0&showDateControls=0&showHeader=0&showDateRange=0&showMenu=0&disableSidepanel=1&showProfileAndInfo=0&showLogo=0"
+          title="Bandkalender"
+          loading="lazy">
+        </iframe>
+      </div>
 
     </div>
   </section>
@@ -127,7 +158,58 @@
     </div>
   </footer>
 
+  <script src="js/intern-auth.js"></script>
   <script src="js/main.js"></script>
   <script src="js/intern-audio.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('copyFeedBtn');
+      const msg = document.getElementById('feedMsg'); // optional
+      if (!btn) return;
+
+      const defaultLabel = btn.innerHTML;
+      let resetTimer = null;
+
+      function flash(text, isError) {
+        if (msg) {
+          msg.textContent = text;
+          msg.hidden = false;
+          msg.classList.toggle('is-error', !!isError);
+        }
+        // Kurze Rückmeldung direkt im Button
+        btn.textContent = isError ? '✕ Fehler' : '✓ Kopiert!';
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () { btn.innerHTML = defaultLabel; }, 2000);
+      }
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        // Fallback für ältere Browser / unsicheren Kontext
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (!ok) throw new Error('copy failed');
+      }
+
+      btn.addEventListener('click', async function () {
+        const url = btn.dataset.feed;
+        try {
+          await copyText(url);
+          flash('✓ Proben-Feed in die Zwischenablage kopiert! Füge den Link in deiner Kalender-App (Google, Apple, Outlook …) unter „Kalender abonnieren / per URL hinzufügen" ein.', false);
+        } catch (e) {
+          flash('Kopieren nicht möglich. Bitte den Link manuell kopieren: ' + url, true);
+          window.prompt('Proben-Feed-Link (manuell kopieren):', url);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
