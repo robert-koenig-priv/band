@@ -31,20 +31,36 @@
     });
   }
 
-  // --- Songs rendern ---
+  // --- Songs als Wortwolke rendern (Gewichtung aus songs.json) ---
   var grid = document.getElementById("songGrid");
-  if (grid && Array.isArray(window.SONGS)) {
-    window.SONGS.forEach(function (s, i) {
-      var el = document.createElement("div");
-      el.className = "song reveal";
-      el.innerHTML =
-        '<span class="num">' + String(i + 1).padStart(2, "0") + "</span>" +
-        '<span class="meta">' +
-          '<span class="title">' + s.title + "</span>" +
-          '<span class="artist">' + s.artist + "</span>" +
-        "</span>";
-      grid.appendChild(el);
-    });
+  if (grid) {
+    // Gewicht (1–5) → Größenstufe (t0–t4). Fehlt/ungültig → 3 (Mitte).
+    function tierForWeight(w) {
+      var n = Math.round(Number(w));
+      if (!(n >= 1 && n <= 5)) n = 3;
+      return n - 1;
+    }
+    function renderSongs(list) {
+      grid.innerHTML = "";
+      list.forEach(function (s) {
+        var el = document.createElement("span");
+        el.className = "song-tag t" + tierForWeight(s.weight);
+        el.textContent = s.title;
+        if (s.artist) el.title = s.artist; // Interpret als Tooltip
+        grid.appendChild(el);
+      });
+    }
+    // Primär: songs.json laden. Fallback: window.SONGS aus js/songs.js
+    // (z. B. wenn die Seite lokal per file:// ohne Server geöffnet wird).
+    fetch("songs.json", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        if (Array.isArray(data) && data.length) renderSongs(data);
+        else throw new Error("songs.json leer");
+      })
+      .catch(function () {
+        if (Array.isArray(window.SONGS)) renderSongs(window.SONGS);
+      });
   }
 
   // --- Band-Karussell (Swipe / Pfeile / Punkte) ---
