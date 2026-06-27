@@ -28,6 +28,10 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
+deployment on githup:
+https://robert-koenig-priv.github.io/band/index.html
+
+
 (Ein Server wird benötigt, damit die eingebetteten YouTube-/Google-Frames und
 relative Pfade sauber laden.)
 
