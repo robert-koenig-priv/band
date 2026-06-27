@@ -256,6 +256,18 @@ img { max-width: 100%; display: block; }
 .audio-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .audio-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem; }
 .audio-card h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; }
+.audio-artist { display: block; font-weight: 500; font-size: .9rem; color: var(--text-dim); margin-top: .15rem; }
+.sc-player { display: block; width: 100%; border: 0; border-radius: 8px; }
+
+/* SoundCloud-Kanal-Aufruf (volle Breite unter den Playern) */
+.audio-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap;
+  margin-top: 2rem; padding: 1.4rem 1.8rem;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.audio-cta h3 { font-size: 1.2rem; font-weight: 700; margin: 0; }
+.audio-cta p { color: var(--text-dim); margin: .25rem 0 0; }
+.audio-cta .btn { flex-shrink: 0; }
 .track { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.4rem; }
 .track:last-child { margin-bottom: 0; }
 .track span { font-weight: 600; font-size: .95rem; }
