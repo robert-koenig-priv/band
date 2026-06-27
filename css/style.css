@@ -177,7 +177,7 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Band members ---------- */
 /* Band-Karussell — ein Mitglied sichtbar, per Swipe / Pfeilen wechselbar */
-.band-carousel { position: relative; max-width: 760px; margin: 0 auto; }
+.band-carousel { position: relative; max-width: 760px; margin: 0 auto; container-type: inline-size; }
 .member-track {
   display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
   scroll-behavior: smooth; gap: 0; border-radius: var(--radius);
@@ -219,6 +219,9 @@ img { max-width: 100%; display: block; }
 .carousel-btn.next { right: -8px; }
 .carousel-btn[disabled] { opacity: .3; cursor: default; }
 @media (max-width: 560px) { .carousel-btn.prev { left: 4px; } .carousel-btn.next { right: 4px; } }
+/* Handy: Foto oben, Text unten → Pfeile auf die Mitte des quadratischen Fotos setzen
+   (50cqw = halbe Karussell-Breite = halbe Fotohöhe), statt auf die Kartenmitte. */
+@media (max-width: 619px) { .carousel-btn { top: 50cqw; } }
 
 /* Punkt-Navigation */
 .carousel-dots { display: flex; justify-content: center; gap: .55rem; margin-top: 1.4rem; }
