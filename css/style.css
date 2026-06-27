@@ -268,6 +268,24 @@ img { max-width: 100%; display: block; }
 .audio-cta h3 { font-size: 1.2rem; font-weight: 700; margin: 0; }
 .audio-cta p { color: var(--text-dim); margin: .25rem 0 0; }
 .audio-cta .btn { flex-shrink: 0; }
+
+/* ===== Newsletter ===== */
+.newsletter-form {
+  display: flex; flex-wrap: wrap; gap: .8rem;
+  max-width: 640px;
+}
+.newsletter-form input {
+  flex: 1 1 220px; min-width: 0;
+  padding: .85rem 1.2rem; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--text);
+  font: inherit;
+}
+.newsletter-form input[type="email"] { flex-basis: 100%; }
+.newsletter-form input:focus { outline: none; border-color: var(--accent); }
+.newsletter-form input::placeholder { color: var(--text-dim); }
+.newsletter-form .btn { flex: 1 1 100%; justify-content: center; }
+.nl-hidden { position: absolute; left: -5000px; }
+.newsletter-note { color: var(--text-dim); font-size: .8rem; margin-top: 1rem; max-width: 560px; }
 .track { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.4rem; }
 .track:last-child { margin-bottom: 0; }
 .track span { font-weight: 600; font-size: .95rem; }

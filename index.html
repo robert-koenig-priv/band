@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
         <li><a href="#songs">Songs</a></li>
         <li><a href="#audio">Audio</a></li>
         <li><a href="#videos">Video</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
         <li><a href="intern.html" class="cta">Proberaum</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
@@ -238,6 +239,38 @@
     </div>
   </section>
 
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="section alt" id="newsletter">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Newsletter</span>
+        <h2>Bleib auf dem Laufenden</h2>
+        <p>Neue Termine, Aufnahmen und News direkt ins Postfach. Kein Spam — versprochen.</p>
+      </div>
+
+      <!-- Mailchimp Classic Embed — POSTet direkt an Mailchimp, kein Backend nötig. -->
+      <form class="newsletter-form reveal"
+            action="https://airdig.us4.list-manage.com/subscribe/post?u=19a8552b06c61787318153551&amp;id=7d48f71e5f&amp;f_id=00383eebf0"
+            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+        <input type="email" name="EMAIL" required placeholder="E-Mail-Adresse *" aria-label="E-Mail-Adresse">
+        <input type="text" name="FNAME" placeholder="Vorname (optional)" aria-label="Vorname">
+        <input type="text" name="LNAME" placeholder="Nachname (optional)" aria-label="Nachname">
+        <!-- Honeypot gegen Bots: bleibt für echte Nutzer unsichtbar, NICHT entfernen -->
+        <div class="nl-hidden" aria-hidden="true">
+          <input type="text" name="b_19a8552b06c61787318153551_7d48f71e5f" tabindex="-1" value="">
+        </div>
+        <button type="submit" name="subscribe" class="btn btn-primary">Anmelden</button>
+      </form>
+      <p class="newsletter-note reveal">Mit der Anmeldung stimmst du zu, E-Mails von The Donkey Shorts zu erhalten. Abmeldung jederzeit möglich.</p>
+    </div>
+
+
+    
+
+
+
+  </section>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
@@ -247,12 +280,13 @@
           <span>The Donkey Shorts</span>
         </div>
         <div class="footer-links">
+          <a href="#band">Die Band</a>
           <a href="#aktuell">Aktuell</a>
-          <a href="#band">Band</a>
           <a href="#songs">Songs</a>
           <a href="#audio">Audio</a>
-          <a href="#videos">Videos</a>
-          <a href="intern.html">Intern</a>
+          <a href="#videos">Video</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="intern.html">Proberaum</a>
         </div>
       </div>
       <p class="footer-copy">© <span id="year"></span> The Donkey Shorts · Rock &amp; Pop Coverband aus Karlsruhe</p>
