@@ -326,6 +326,9 @@ img { max-width: 100%; display: block; }
 .footer-brand img { height: 44px; border-radius: 8px; }
 .footer-links { display: flex; gap: 1.4rem; color: var(--text-dim); font-size: .9rem; }
 .footer-links a:hover { color: var(--accent); }
+.footer-social { display: inline-flex; align-items: center; gap: .5rem; color: var(--text-dim); font-weight: 600; font-size: .92rem; }
+.footer-social svg { width: 22px; height: 22px; }
+.footer-social:hover { color: var(--accent); }
 .footer-copy { color: var(--text-dim); font-size: .85rem; margin-top: 2rem; text-align: center; }
 .footer-copy a { color: var(--text-dim); }
 .footer-copy a:hover { color: var(--accent); }
