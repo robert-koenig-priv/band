@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage Rider — The Donkey Shorts</title>
+  <meta name="description" content="Technischer Stage Rider der Coverband The Donkey Shorts — Bühnenplan, Kanalliste und Monitoring.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav scrolled" id="nav">
+    <div class="container">
+      <a class="nav-brand" href="index.html">
+        <img src="assets/img/logo.png" alt="The Donkey Shorts Logo">
+        <span>The Donkey Shorts</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">← Zur Startseite</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="intern-hero">
+    <div class="container">
+      <span class="kicker">Technik</span>
+      <h1>Stage Rider</h1>
+      <p style="color:var(--text-dim);max-width:620px;margin-top:.6rem;">
+        Technische Angaben für Veranstalter und Tontechnik — Bühnenaufbau, Kanalliste
+        und Monitoring der Donkey Shorts (6-köpfige Rock- &amp; Pop-Coverband).
+      </p>
+    </div>
+  </header>
+
+  <!-- ===================== MONITORING ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Monitoring</span>
+        <h2>Komplett In-Ear</h2>
+      </div>
+      <div class="rider-note">
+        <p>
+          Die Band spielt durchgängig mit <strong>In-Ear-Monitoring</strong> und bringt das
+          eigene System mit. <strong>Es werden keine Bühnenmonitore (Wedges) benötigt.</strong>
+          Vom FOH-Pult benötigen wir lediglich die entsprechenden Monitor-/Aux-Wege bzw.
+          einen Split der Eingangssignale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BÜHNENPLAN ===================== -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Bühnenplan</span>
+        <h2>Aufstellung</h2>
+        <p>Ansicht von vorne (Publikumssicht). Maße variabel — Mindestbreite ca. 6&nbsp;m.</p>
+      </div>
+
+      <div class="stageplot">
+        <svg viewBox="0 0 820 560" role="img" aria-label="Bühnenplan der Band The Donkey Shorts">
+          <!-- Bühnenfläche -->
+          <rect x="10" y="10" width="800" height="470" rx="18" class="sp-stage"/>
+          <text x="410" y="40" class="sp-back">↑ Bühnenrückwand</text>
+
+          <!-- Drums (Torsten) — hinten Mitte, auf Riser -->
+          <g>
+            <rect x="320" y="70" width="180" height="92" rx="12" class="sp-box sp-drums"/>
+            <text x="410" y="100" class="sp-name">Torsten 🥁</text>
+            <text x="410" y="122" class="sp-role">Drums</text>
+            <text x="410" y="144" class="sp-tag">volle Mikrofonierung · IEM</text>
+          </g>
+
+          <!-- Keys (Maria) — hinten links (Publikumssicht) -->
+          <g>
+            <rect x="70" y="95" width="170" height="92" rx="12" class="sp-box"/>
+            <text x="155" y="125" class="sp-name">Maria 🎹</text>
+            <text x="155" y="147" class="sp-role">Keys</text>
+            <text x="155" y="169" class="sp-tag">Keyboard (DI) + Mikro 🎤 · IEM</text>
+          </g>
+
+          <!-- Bass (Andy) — hinten rechts -->
+          <g>
+            <rect x="580" y="95" width="170" height="92" rx="12" class="sp-box"/>
+            <text x="665" y="125" class="sp-name">Andy 🎸</text>
+            <text x="665" y="147" class="sp-role">Bass</text>
+            <text x="665" y="169" class="sp-tag">DI · kein Mikro · IEM</text>
+          </g>
+
+          <!-- Lead-Gitarre (Joe) — vorne links -->
+          <g>
+            <rect x="70" y="290" width="170" height="92" rx="12" class="sp-box"/>
+            <text x="155" y="320" class="sp-name">Joe 🎸</text>
+            <text x="155" y="342" class="sp-role">Lead-Gitarre</text>
+            <text x="155" y="364" class="sp-tag">DI / Amp · kein Mikro · IEM</text>
+          </g>
+
+          <!-- Lead Vocals (Annie) — vorne Mitte -->
+          <g>
+            <rect x="320" y="290" width="180" height="92" rx="12" class="sp-box sp-vox"/>
+            <text x="410" y="320" class="sp-name">Annie 🎤</text>
+            <text x="410" y="342" class="sp-role">Lead Vocals</text>
+            <text x="410" y="364" class="sp-tag">nur Gesang · IEM</text>
+          </g>
+
+          <!-- Vocals + Akustik (Robert) — vorne rechts -->
+          <g>
+            <rect x="565" y="290" width="185" height="92" rx="12" class="sp-box sp-vox"/>
+            <text x="657" y="318" class="sp-name">Robert 🎤🎸</text>
+            <text x="657" y="340" class="sp-role">Vocals &amp; Akustikgitarre</text>
+            <text x="657" y="362" class="sp-tag">Gesang + Akustik (DI) · IEM</text>
+          </g>
+
+          <!-- Publikum -->
+          <text x="410" y="455" class="sp-front">↓ Publikum / FOH</text>
+        </svg>
+      </div>
+
+      <ul class="rider-legend">
+        <li>🎤 Mikrofon</li>
+        <li>🎸 Instrument über DI/Amp</li>
+        <li>🎹 Keyboard über DI (Stereo)</li>
+        <li>🥁 Drums voll mikrofoniert</li>
+        <li>IEM In-Ear-Monitoring (eigenes System)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== KANALLISTE ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Inputs</span>
+        <h2>Kanalliste</h2>
+        <p>15 Kanäle gesamt. DI-Boxen und Mikrofone können – falls nicht gestellt – von uns mitgebracht werden.</p>
+      </div>
+
+      <div class="rider-table-wrap">
+        <table class="rider-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Quelle</th>
+              <th>Abnahme</th>
+              <th>+48V</th>
+              <th>Hinweis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Kick</td><td>Mikro</td><td>–</td><td>Torsten — Drums</td></tr>
+            <tr><td>2</td><td>Snare</td><td>Mikro</td><td>–</td><td></td></tr>
+            <tr><td>3</td><td>Hi-Hat</td><td>Mikro</td><td>+48V</td><td>Kondensator</td></tr>
+            <tr><td>4</td><td>Tom</td><td>Mikro</td><td>–</td><td></td></tr>
+            <tr><td>5</td><td>Floor Tom</td><td>Mikro</td><td>–</td><td></td></tr>
+            <tr><td>6</td><td>Overhead L</td><td>Mikro</td><td>+48V</td><td>Kondensator</td></tr>
+            <tr><td>7</td><td>Overhead R</td><td>Mikro</td><td>+48V</td><td>Kondensator</td></tr>
+            <tr><td>8</td><td>Bass</td><td>DI</td><td>–</td><td>Andy — kein Mikro</td></tr>
+            <tr><td>9</td><td>E-Gitarre</td><td>DI / Amp</td><td>–</td><td>Joe — kein Mikro</td></tr>
+            <tr><td>10</td><td>Keyboard L</td><td>DI</td><td>–</td><td>Maria</td></tr>
+            <tr><td>11</td><td>Keyboard R</td><td>DI</td><td>–</td><td>Maria</td></tr>
+            <tr><td>12</td><td>Akustikgitarre</td><td>DI</td><td>–</td><td>Robert</td></tr>
+            <tr><td>13</td><td>Gesang Annie</td><td>Mikro</td><td>–</td><td>Lead</td></tr>
+            <tr><td>14</td><td>Gesang Robert</td><td>Mikro</td><td>–</td><td>Lead</td></tr>
+            <tr><td>15</td><td>Gesang Maria</td><td>Mikro</td><td>–</td><td>Backing</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/img/logo.png" alt="Logo">
+          <span>The Donkey Shorts</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Startseite</a>
+          <a href="stagerider.html">Stage Rider</a>
+          <a href="impressum.html">Impressum</a>
+        </div>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> The Donkey Shorts · Rock &amp; Pop Coverband aus Karlsruhe · <a href="impressum.html">Impressum</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=3"></script>
+</body>
+</html>
