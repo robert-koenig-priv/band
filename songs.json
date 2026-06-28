@@ -1,5 +1,4 @@
 [
-  { "title": "Highway to Hell",                "artist": "ACDC",                      "weight": 5 },
   { "title": "I Put A Spell On You",           "artist": "Annie Lennox",              "weight": 1 },
   { "title": "Spooky",                         "artist": "Atlanta Rhythm Section",    "weight": 2 },
   { "title": "Can't Get Enough",               "artist": "Bad Company",               "weight": 3 },
@@ -14,6 +13,7 @@
   { "title": "Walking By Myself",              "artist": "Gary Moore",                "weight": 2 },
   { "title": "When You're Gone",                   "artist": "Bryan Adams, Mel C", "weight": 4 },
   { "title": "Alone",                          "artist": "Heart",                     "weight": 1 },
+  { "title": "Highway to Hell",                "artist": "ACDC",                      "weight": 5 },
   { "title": "Wicked Game",                    "artist": "HIM",                       "weight": 4 },
   { "title": "Ex's & Oh's",                    "artist": "Elle King",                 "weight": 5 },
   { "title": "Are You Gonna Be My Girl",       "artist": "Jet",                       "weight": 1 },

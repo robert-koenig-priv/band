@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <!-- Einfacher Zugriffsschutz (clientseitig) -->
   <style>
     html.gate-locked body > *:not(#authGate) { display: none !important; }
@@ -30,7 +30,6 @@
   <div id="authGate">
     <form id="authForm" class="auth-box" autocomplete="off">
       <img src="assets/fotos/bunker.png" alt="Unser Bandbunker an der Rheinhafenstraße" class="auth-photo" loading="eager">
-      <img src="assets/img/logo.png" alt="Logo" class="auth-logo">
       <h2>Proberaum 🔒</h2>
       <p style="color:var(--text-dim);margin:0;">Bitte Passwort eingeben.</p>
       <input type="password" id="authInput" placeholder="Passwort" aria-label="Passwort" autofocus>
@@ -168,13 +167,13 @@
           <span>The Donkey Shorts</span>
         </div>
         <div class="footer-links">
-          <a href="index.html">Öffentliche Seite</a>
-          <a href="#proben">Proben-Audios</a>
-          <a href="#songliste">Songliste</a>
-          <a href="#kalender">Kalender</a>
+          <a href="index.html">← Öffentlich</a>
+          <a href="#kalender">Termine</a>
+          <a href="#proben">Üben</a>
+          <a href="impressum.html">Impressum</a>
         </div>
       </div>
-      <p class="footer-copy">© <span id="year"></span> The Donkey Shorts · Interner Bereich</p>
+      <p class="footer-copy">© <span id="year"></span> The Donkey Shorts · Interner Bereich · <a href="impressum.html">Impressum</a></p>
     </div>
   </footer>
 
