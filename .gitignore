@@ -9,9 +9,9 @@
 .gitmodules
 
 # Editor / IDE / Tooling
-.idea/
-.vscode/
-.claude/
+.idea
+.vscode
+.claude
 .mcp.json
 
 # OS-Artefakte
