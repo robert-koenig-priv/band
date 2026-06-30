@@ -1,0 +1,19 @@
+# Persönliche / Maschinen-Konfiguration (gehört nicht ins Repo)
+.bashrc
+.bash_profile
+.profile
+.zshrc
+.zprofile
+.gitconfig
+.ripgreprc
+.gitmodules
+
+# Editor / IDE / Tooling
+.idea/
+.vscode/
+.claude/
+.mcp.json
+
+# OS-Artefakte
+.DS_Store
+Thumbs.db
