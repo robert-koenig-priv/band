@@ -45,6 +45,20 @@ relative Pfade sauber laden.)
   (Abschnitt `#kalender`) eintragen und Platzhalter entfernen.
 - **Zugriffsschutz** für `intern.html` kommt mit dem Backend.
 
+## Build-Version (Git-Hook)
+
+Die auf der Contact-Seite angezeigte Version (`v0.1.<Buildnummer>`) wird vor jedem
+Commit automatisch durch den Hook `.githooks/pre-commit` in `contact.html` gestempelt.
+Die Buildnummer entspricht der laufenden Commit-Anzahl, die Major.Minor (`BASE`)
+wird oben im Hook gepflegt.
+
+Der Hook ist im Repo versioniert, aber `core.hooksPath` ist eine lokale Git-Einstellung.
+Nach einem frischen Clone (oder auf einem anderen Rechner) einmalig aktivieren:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Hinweise
 
 - Schriften (Bebas Neue, Inter) werden von Google Fonts geladen.
