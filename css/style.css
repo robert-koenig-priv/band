@@ -406,4 +406,8 @@ html.js-anim .reveal.in { opacity: 1; transform: none; }
   .audio-wrap { grid-template-columns: 1fr; }
   .gig { grid-template-columns: auto 1fr; }
   .gig-meta { grid-column: 2; text-align: left; }
+  /* Weniger Leerraum oben/unten je Sektion, damit nach dem Sprung
+     zu einem #Anchor möglichst viel der Sektion sichtbar ist. */
+  .section { padding: 3rem 0; }
+  .section-head { margin-bottom: 1.8rem; }
 }
