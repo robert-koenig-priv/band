@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Auto-Stamp der Build-Version in contact.html vor jedem Commit.
+#
+# Format: v<BASE>.<BUILD>  z. B. v0.1.234
+#   BASE  = manuell gepflegte Major.Minor (unten anpassen, z. B. "0.2")
+#   BUILD = laufende Commit-Nummer (git rev-list --count), zaehlt automatisch hoch
+#
+# So entspricht die auf der Contact-Seite angezeigte Version immer genau
+# dem ausgelieferten Stand.
+
+set -e
+
+BASE="0.1"
+FILE="contact.html"
+
+# Repo-Wurzel als Arbeitsverzeichnis (Hook laeuft sonst evtl. woanders)
+cd "$(git rev-parse --show-toplevel)"
+
+[ -f "$FILE" ] || exit 0
+grep -q 'class="build-version"' "$FILE" || exit 0
+
+# Bisherige Commits + der gerade entstehende
+COUNT=$(git rev-list --count HEAD 2>/dev/null || echo 0)
+BUILD=$((COUNT + 1))
+VERSION="v${BASE}.${BUILD}"
+
+# Inhalt des <span class="build-version"> ersetzen (Praefix "- " beibehalten)
+sed -i.bak -E "s#(<span class=\"build-version\">)[^<]*(</span>)#\1- ${VERSION}\2#" "$FILE"
+rm -f "${FILE}.bak"
+
+# Aktualisierte Datei in den laufenden Commit aufnehmen
+git add "$FILE"

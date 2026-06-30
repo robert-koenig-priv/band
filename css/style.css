@@ -351,6 +351,7 @@ html.js-anim .reveal.in { opacity: 1; transform: none; }
 .legal p { color: var(--text-dim); }
 .legal a { color: var(--accent); }
 .legal a:hover { text-decoration: underline; }
+.build-version { color: var(--text-dim); }
 
 /* ===== Stage Rider ===== */
 .rider-note { background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 1.4rem 1.6rem; max-width: 720px; }
