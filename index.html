@@ -17,7 +17,7 @@
   <nav class="nav" id="nav">
     <div class="container">
       <a class="nav-brand" href="#top">
-        <img src="assets/img/logo.png" alt="The Donkey Shorts Logo">
+        <img id="navLogo" src="assets/img/logo.png" alt="The Donkey Shorts Logo">
         <span>The Donkey Shorts</span>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -310,7 +310,14 @@
     </div>
   </footer>
 
+  <!-- ===================== EASTER EGG ===================== -->
+  <!-- Versteckt: 6× Klick auf das Nav-Logo (siehe js/main.js). -->
+  <div class="egg-overlay" id="eggOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Überraschung">
+    <img src="assets/img/BeAirdigt.png?v=1" alt="BeAirdigt">
+    <span class="egg-hint">Klick oder ESC zum Schließen</span>
+  </div>
+
   <script src="js/songs.js?v=2"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

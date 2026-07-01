@@ -167,4 +167,42 @@
     }, { rootMargin: "-40% 0px -55% 0px" });
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  // --- Easter Egg: 6× Klick auf das Nav-Logo öffnet BeAirdigt.png ---
+  // Bewusst versteckt: kein Hinweis in der UI. Der Zähler setzt sich
+  // zurück, wenn zwischen zwei Klicks mehr als 1,2 s liegen – so löst
+  // gelegentliches Klicken aufs Logo den Egg nicht versehentlich aus.
+  var eggLogo = document.getElementById("navLogo");
+  var eggOverlay = document.getElementById("eggOverlay");
+  if (eggLogo && eggOverlay) {
+    var eggClicks = 0;
+    var eggLast = 0;
+    var EGG_NEEDED = 6;
+    var EGG_WINDOW = 1200; // ms zwischen zwei Klicks
+
+    function openEgg() {
+      eggOverlay.classList.add("open");
+      eggOverlay.setAttribute("aria-hidden", "false");
+    }
+    function closeEgg() {
+      eggOverlay.classList.remove("open");
+      eggOverlay.setAttribute("aria-hidden", "true");
+    }
+
+    eggLogo.addEventListener("click", function () {
+      // Der normale Sprung zu #top bleibt erhalten; wir zählen nur mit.
+      var now = Date.now();
+      eggClicks = (now - eggLast <= EGG_WINDOW) ? eggClicks + 1 : 1;
+      eggLast = now;
+      if (eggClicks >= EGG_NEEDED) {
+        eggClicks = 0;
+        openEgg();
+      }
+    });
+
+    eggOverlay.addEventListener("click", closeEgg);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeEgg();
+    });
+  }
 })();
